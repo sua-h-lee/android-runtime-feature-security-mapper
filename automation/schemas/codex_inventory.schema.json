@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "run_id", "step_analyses", "inventory"],
+  "properties": {
+    "schema_version": {"type": "string"},
+    "run_id": {"type": "string"},
+    "step_analyses": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "step_id", "feature_id", "feature_label", "category",
+          "normal_behavior", "observed_evidence", "security_priority",
+          "priority_reasons", "security_unknowns", "recommended_follow_up",
+          "confidence", "inference_notes", "evidence_refs"
+        ],
+        "properties": {
+          "step_id": {"type": "string"},
+          "feature_id": {"type": "string"},
+          "feature_label": {"type": "string"},
+          "category": {"type": "string"},
+          "normal_behavior": {"type": "array", "items": {"type": "string"}},
+          "observed_evidence": {"type": "array", "items": {"type": "string"}},
+          "security_priority": {"type": "string", "enum": ["low", "medium", "high"]},
+          "priority_reasons": {"type": "array", "items": {"type": "string"}},
+          "security_unknowns": {"type": "array", "items": {"type": "string"}},
+          "recommended_follow_up": {"type": "array", "items": {"type": "string"}},
+          "confidence": {"type": "string", "enum": ["low", "medium", "high"]},
+          "inference_notes": {"type": "array", "items": {"type": "string"}},
+          "evidence_refs": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    },
+    "inventory": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version", "source_runs", "features", "coverage",
+        "unresolved_questions"
+      ],
+      "properties": {
+        "schema_version": {"type": "string"},
+        "source_runs": {"type": "array", "items": {"type": "string"}},
+        "features": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "feature_id", "feature_name", "category", "status", "description",
+              "actors", "entry_points", "preconditions", "screens", "normal_flow",
+              "security_assets", "controllable_inputs", "trust_boundaries",
+              "protocols", "expected_authorization", "state_changes", "data_storage",
+              "external_destinations", "failure_behavior", "security_priority",
+              "security_unknowns", "recommended_follow_up", "evidence_refs",
+              "observed_run_ids"
+            ],
+            "properties": {
+              "feature_id": {"type": "string"},
+              "feature_name": {"type": "string"},
+              "category": {"type": "string"},
+              "status": {"type": "string", "enum": ["observed", "partial", "inferred"]},
+              "description": {"type": "string"},
+              "actors": {"type": "array", "items": {"type": "string"}},
+              "entry_points": {"type": "array", "items": {"type": "string"}},
+              "preconditions": {"type": "array", "items": {"type": "string"}},
+              "screens": {"type": "array", "items": {"type": "string"}},
+              "normal_flow": {"type": "array", "items": {"type": "string"}},
+              "security_assets": {"type": "array", "items": {"type": "string"}},
+              "controllable_inputs": {"type": "array", "items": {"type": "string"}},
+              "trust_boundaries": {"type": "array", "items": {"type": "string"}},
+              "protocols": {"type": "array", "items": {"type": "string"}},
+              "expected_authorization": {"type": "array", "items": {"type": "string"}},
+              "state_changes": {"type": "array", "items": {"type": "string"}},
+              "data_storage": {"type": "array", "items": {"type": "string"}},
+              "external_destinations": {"type": "array", "items": {"type": "string"}},
+              "failure_behavior": {"type": "array", "items": {"type": "string"}},
+              "security_priority": {"type": "string", "enum": ["low", "medium", "high"]},
+              "security_unknowns": {"type": "array", "items": {"type": "string"}},
+              "recommended_follow_up": {"type": "array", "items": {"type": "string"}},
+              "evidence_refs": {"type": "array", "items": {"type": "string"}},
+              "observed_run_ids": {"type": "array", "items": {"type": "string"}}
+            }
+          }
+        },
+        "coverage": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["observed_feature_count", "observed_categories", "blocked_candidate_count", "notes"],
+          "properties": {
+            "observed_feature_count": {"type": "integer"},
+            "observed_categories": {"type": "array", "items": {"type": "string"}},
+            "blocked_candidate_count": {"type": "integer"},
+            "notes": {"type": "array", "items": {"type": "string"}}
+          }
+        },
+        "unresolved_questions": {"type": "array", "items": {"type": "string"}}
+      }
+    }
+  }
+}

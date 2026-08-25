@@ -1,0 +1,140 @@
+{
+  "max_auto_risk": "safe",
+  "default_unlabeled_risk": "unknown",
+  "generic_confirmation_labels": [
+    "확인",
+    "예",
+    "동의",
+    "ok",
+    "yes",
+    "confirm",
+    "continue"
+  ],
+  "rules": [
+    {
+      "id": "promotional-navigation",
+      "level": "unknown",
+      "keywords": [],
+      "resource_id_keywords": [
+        "ad_view",
+        "ad_banner",
+        "advertisement",
+        "promotion_banner"
+      ],
+      "reason": "Promotional navigation is excluded from the default feature crawl."
+    },
+    {
+      "id": "destructive-state",
+      "level": "state_change",
+      "keywords": [
+        "삭제",
+        "제거",
+        "숨김",
+        "차단",
+        "신고",
+        "나가기",
+        "로그아웃",
+        "delete",
+        "remove",
+        "hide",
+        "block",
+        "report",
+        "leave",
+        "logout"
+      ],
+      "resource_id_keywords": [
+        "delete",
+        "remove",
+        "hide",
+        "block",
+        "report",
+        "logout"
+      ],
+      "reason": "This action may persistently change account, friend, or content state."
+    },
+    {
+      "id": "outbound-communication",
+      "level": "external_effect",
+      "keywords": [
+        "보내기",
+        "전송",
+        "메시지 보내기",
+        "통화",
+        "전화",
+        "공유",
+        "send",
+        "submit",
+        "call",
+        "share"
+      ],
+      "resource_id_keywords": [
+        "send_button",
+        "submit",
+        "call_button",
+        "share_button"
+      ],
+      "reason": "This action may contact another user or an external service."
+    },
+    {
+      "id": "financial-action",
+      "level": "critical",
+      "keywords": [
+        "결제",
+        "구매",
+        "송금",
+        "충전",
+        "pay",
+        "purchase",
+        "buy",
+        "transfer"
+      ],
+      "resource_id_keywords": [
+        "payment",
+        "purchase",
+        "transfer"
+      ],
+      "reason": "Financial actions are never safe for unattended exploration."
+    },
+    {
+      "id": "account-critical",
+      "level": "critical",
+      "keywords": [
+        "회원탈퇴",
+        "계정 삭제",
+        "초기화",
+        "withdraw account",
+        "delete account",
+        "reset account"
+      ],
+      "resource_id_keywords": [
+        "withdraw_account",
+        "delete_account"
+      ],
+      "reason": "This action can irreversibly alter or remove an account."
+    },
+    {
+      "id": "permission-grant",
+      "level": "state_change",
+      "keywords": [
+        "허용",
+        "권한",
+        "allow",
+        "permission"
+      ],
+      "resource_id_keywords": [
+        "permission_allow"
+      ],
+      "reason": "Permission grants change the test device security posture."
+    },
+    {
+      "id": "fixture-input",
+      "level": "unknown",
+      "keywords": [],
+      "resource_id_keywords": [],
+      "action_types": [
+        "type"
+      ],
+      "reason": "Text input requires an explicitly configured test fixture."
+    }
+  ]
+}

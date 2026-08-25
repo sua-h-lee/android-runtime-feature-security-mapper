@@ -1,0 +1,44 @@
+{
+  "device_serial": "emulator-5554",
+  "adb_path": "adb",
+  "package": "com.kakao.talk",
+  "frida_script": "../frida_feature_trace.js",
+  "output_dir": "../runs",
+  "policy_path": "risk_policy.json",
+  "codex_schema": "schemas/codex_inventory.schema.json",
+  "inventory_path": "../inventory/feature-inventory.json",
+  "max_auto_risk": "safe",
+  "max_steps": 20,
+  "max_backtracks": 10,
+  "startup_settle_seconds": 3.0,
+  "startup_ready_timeout_seconds": 20.0,
+  "ui_stable_timeout_seconds": 7.0,
+  "trace_quiet_seconds": 1.0,
+  "trace_quiet_timeout_seconds": 5.0,
+  "stop_app_when_done": true,
+  "goal": "Inventory low-risk KakaoTalk features and record their normal runtime behavior.",
+  "input_fixtures": [
+    {
+      "key": "test-message",
+      "resource_id_contains": "message_edit_text",
+      "value_env": "KAKAO_TEST_MESSAGE"
+    }
+  ],
+  "glm": {
+    "enabled": false,
+    "base_url": "https://api.z.ai/api/paas/v4",
+    "model": "glm-5.1",
+    "api_key_env": "GLM_API_KEY",
+    "timeout_seconds": 120,
+    "vision": false,
+    "include_ui_text": true
+  },
+  "codex": {
+    "enabled": true,
+    "command": "codex",
+    "model": "",
+    "timeout_seconds": 900,
+    "auto_analyze_after_explore": true,
+    "batch_size": 20
+  }
+}

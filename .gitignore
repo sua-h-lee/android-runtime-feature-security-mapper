@@ -1,0 +1,39 @@
+# Local development
+.DS_Store
+.idea/
+*.iml
+venv/
+**/__pycache__/
+*.py[cod]
+
+# Credentials and local environment
+.env
+.env.*
+*.key
+*.pem
+
+# Runtime evidence may contain account, device, session, or network identifiers.
+runs/
+logs/
+inventory/
+*.log
+trace_sensitive.log
+
+# Third-party application artifacts and reverse-engineering output
+*.apk
+*.apks
+*.aab
+*.dex
+frida-server-*
+*.xz
+apk_*/
+decompiled/
+jadx-mcp-server/
+
+# Legacy/local research artifacts not part of the published automation
+hook.js
+http_script.js
+frida_write_trace.js
+FRIDA_WRITE_TRACE.md
+APK_SCRIPT_AUDIT_*.md
+SCRIPT_COMPARISON.md
